@@ -77,7 +77,7 @@ const Payment: React.FC<Props> = ({ navigation }) => {
       const formattedYear = expYear.slice(-2);
       const expDate = `${formattedMonth}/${formattedYear}`;
       const result = validateCreditCard(cardNumber.replace(/\s+/g, ''), cvv, expDate);
-      Alert.alert(result.message);
+      Alert.alert('', result.message, [{ text: 'Tamam' }]);
     }
   };
 
@@ -98,15 +98,14 @@ const Payment: React.FC<Props> = ({ navigation }) => {
         style={backgroundStyle}
         contentContainerStyle={styles.scrollViewContent}
       >
-                  <View style={styles.navbar}>
-            <TouchableOpacity onPress={() => navigation.navigate('ShoppingCart')}>
-              <Text style={styles.navbarText}>Geri</Text>
-            </TouchableOpacity>
-            <Text style={styles.navbarTitle}>Ödeme</Text>
-            <View style={{ width: 50 }} />
-          </View>
+        <View style={styles.navbar}>
+          <TouchableOpacity onPress={() => navigation.navigate('ShoppingCart')}>
+            <Text style={styles.navbarText}>Geri</Text>
+          </TouchableOpacity>
+          <Text style={styles.navbarTitle}>Ödeme</Text>
+          <View style={{ width: 50 }} />
+        </View>
         <View style={{ padding: width * 0.02 }}>
-
           <View style={styles.content}>
             <View style={styles.card}>
               <Text style={styles.cardNumber}>
@@ -242,7 +241,7 @@ const styles = StyleSheet.create({
     width: '90%',
     height: height * 0.25,
     borderRadius: 10,
-    backgroundColor: '#1e3d58',
+    backgroundColor: '#0d2849',
     padding: width * 0.05,
     marginBottom: height * 0.03, // Adjust this line for spacing
     marginTop: height * 0.015, // Add space, provides distance from navbar
@@ -250,62 +249,64 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   cardNumber: {
-    fontSize: width * 0.06,
+    fontSize: width * 0.07,
+    fontWeight: 'bold',
     color: 'white',
-    letterSpacing: 2,
+    marginBottom: height * 0.03,
+    textAlign: 'center',
   },
   cardDetails: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: height * 0.03,
   },
   cardDetailText: {
-    fontSize: width * 0.045,
+    fontSize: width * 0.05,
+    fontWeight: 'bold',
     color: 'white',
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    padding: width * 0.025,
+    marginBottom: height * 0.015,
+    width: '100%',
+    fontSize: width * 0.04,
+  },
+  inputError: {
+    borderColor: 'red',
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   inputContainer: {
     flex: 1,
-  },
-  input: {
-    height: height * 0.05,
-    borderColor: 'gray',
-    borderWidth: 1,
-    borderRadius: 5,
-    paddingHorizontal: width * 0.025,
-    marginBottom: height * 0.015,
+    marginRight: width * 0.01,
   },
   cvvInput: {
-    marginRight: width * 0.03,
+    flex: 1,
+    marginRight: width * 0.02,
   },
   expInput: {
-    marginLeft: width * 0.03,
+    flex: 2,
   },
-  picker: {
-    height: height * 0.06,
-    flex: 1, // Adjusted to flex
+  errorText: {
+    color: 'red',
     marginBottom: height * 0.015,
-  },
-  monthPicker: {
-    marginRight: width * 0.03,
-  },
-  yearPicker: {
-    marginLeft: width * 0.03,
   },
   pickerRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
   },
-  row: {
-    flexDirection: 'row',
-    alignItems: 'center',
+  picker: {
+    flex: 1,
   },
-  errorText: {
-    color: 'red',
-    marginTop: height * 0.01,
+  monthPicker: {
+    marginRight: width * 0.02,
   },
-  inputError: {
-    borderColor: 'red',
+  yearPicker: {
+    marginLeft: width * 0.02,
   },
 });
 

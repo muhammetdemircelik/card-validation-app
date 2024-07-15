@@ -13,6 +13,7 @@ import {
   Image,
   Dimensions,
 } from 'react-native';
+import Toast from 'react-native-root-toast';
 import { useNavigation } from '@react-navigation/native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import { CartContext } from './CartContext';
@@ -23,7 +24,7 @@ type Product = {
   id: string;
   name: string;
   price: number;
-  image: any; 
+  image: any;
 };
 
 const products: Product[] = [
@@ -48,12 +49,32 @@ const Home: React.FC = () => {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
+  const showToast = (message: string) => {
+    Toast.show(message, {
+      duration: Toast.durations.SHORT,
+      position: Toast.positions.CENTER,
+      shadow: true,
+      animation: true,
+      hideOnPress: true,
+      delay: 0,
+      containerStyle: {
+        paddingHorizontal: 20, // Adjust this value if needed
+      },
+    });
+  };
+
   const renderItem = ({ item }: { item: Product }) => (
     <View style={styles.productContainer}>
       <Image source={item.image} style={styles.productImage} resizeMode="cover" />
       <Text style={styles.productName}>{item.name}</Text>
       <Text style={styles.productPrice}>{item.price} TL</Text>
-      <Button title="Sepete Ekle" onPress={() => addToCart(item)} />
+      <Button
+        title="Sepete Ekle"
+        onPress={() => {
+          addToCart(item);
+          showToast(`${item.name} sepetinize eklenmiştir`);
+        }}
+      />
     </View>
   );
 
@@ -90,7 +111,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   navbar: {
-    backgroundColor: '#FFA500', 
+    backgroundColor: '#FFA500',
     paddingVertical: width * 0.025,
     alignItems: 'center',
     justifyContent: 'center',
@@ -103,7 +124,7 @@ const styles = StyleSheet.create({
   tabbar: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    backgroundColor: '#FFA500', 
+    backgroundColor: '#FFA500',
     paddingVertical: width * 0.025,
     position: 'absolute',
     bottom: 0,
