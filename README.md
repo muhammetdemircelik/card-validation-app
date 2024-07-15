@@ -14,8 +14,10 @@ Projeyi yerel makinenize indirdikten sonra, aşağıdaki adımları izleyerek uy
    ```bash
    cd proje-dizini
 2. Gerekli bağımlılıkları indirin:
+   ```bash
    npm install
-3. React Native Metro Bundler'ı başlatın:
+4. React Native Metro Bundler'ı başlatın:
+   ```bash
    npx react-native start
    
 Özellikler:
