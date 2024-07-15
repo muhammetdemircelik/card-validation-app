@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       alignItems: 'center',
       paddingHorizontal: width * 0.025,
-      paddingVertical: height * 0.02,
+      paddingVertical: height * 0.001,
       borderBottomWidth: 1,
       borderBottomColor: '#ccc',
       backgroundColor: '#FFA500',

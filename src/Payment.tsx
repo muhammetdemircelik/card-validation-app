@@ -98,14 +98,15 @@ const Payment: React.FC<Props> = ({ navigation }) => {
         style={backgroundStyle}
         contentContainerStyle={styles.scrollViewContent}
       >
-        <View style={{ padding: width * 0.06 }}>
-          <View style={styles.navbar}>
+                  <View style={styles.navbar}>
             <TouchableOpacity onPress={() => navigation.navigate('ShoppingCart')}>
               <Text style={styles.navbarText}>Geri</Text>
             </TouchableOpacity>
             <Text style={styles.navbarTitle}>Ödeme</Text>
             <View style={{ width: 50 }} />
           </View>
+        <View style={{ padding: width * 0.02 }}>
+
           <View style={styles.content}>
             <View style={styles.card}>
               <Text style={styles.cardNumber}>
@@ -301,7 +302,7 @@ const styles = StyleSheet.create({
   },
   errorText: {
     color: 'red',
-    marginTop: height * 0.01, // Adjust this value to move the error message further down
+    marginTop: height * 0.01,
   },
   inputError: {
     borderColor: 'red',
